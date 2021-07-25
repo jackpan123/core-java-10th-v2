@@ -14,7 +14,7 @@ import java.util.List;
 public class CountLongWords {
 
     public static void main(String[] args) throws IOException {
-        
+
         String contents = new String(Files.readAllBytes(
             Paths.get("src/gutenberg/alice30.txt")), StandardCharsets.UTF_8
         );
