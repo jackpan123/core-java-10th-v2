@@ -1,4 +1,4 @@
-package com.jackpan.streams;
+package com.jackpan.v2ch01.stream;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

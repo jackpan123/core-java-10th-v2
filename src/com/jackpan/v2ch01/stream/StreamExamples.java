@@ -1,4 +1,4 @@
-package com.jackpan.streams;
+package com.jackpan.v2ch01.stream;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -25,7 +26,18 @@ public class StreamExamples {
 
         Stream.iterate(1.0, p -> p * 2)
             .peek(e -> System.out.println("Fetching " + e)).limit(20).toArray();
-        System.out.println();
+
+        Optional<String> max = words.stream().max(String::compareToIgnoreCase);
+        System.out.println("Max: " + max.orElse(""));
+
+        Optional<String> q = words.stream().filter(s -> s.startsWith("Q")).findFirst();
+        System.out.println("first Q: " + q.orElse(""));
+
+        Optional<String> any = words.stream().parallel().filter(s -> s.startsWith("Q")).findAny();
+        System.out.println("first Q: " + any.orElse(""));
+
+        boolean result = words.stream().parallel().anyMatch(s -> s.startsWith("Q"));
+        System.out.println(result);
     }
 
     public static Stream<String> letters(String s) {
