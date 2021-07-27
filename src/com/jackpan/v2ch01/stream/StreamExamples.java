@@ -7,8 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -38,6 +40,13 @@ public class StreamExamples {
 
         boolean result = words.stream().parallel().anyMatch(s -> s.startsWith("Q"));
         System.out.println(result);
+
+        IntSummaryStatistics summaryStatistics = words.stream()
+            .collect(Collectors.summarizingInt(String::length));
+        double average = summaryStatistics.getAverage();
+        int max1 = summaryStatistics.getMax();
+        System.out.println(average);
+        System.out.println(max1);
     }
 
     public static Stream<String> letters(String s) {
