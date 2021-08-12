@@ -60,6 +60,7 @@ public class CollectingIntoMaps {
         Map<Integer, String> idToName = people().collect(Collectors.toMap(Person::getId, Person::getName));
         System.out.println("idToName: " + idToName);
 
+
         Map<Integer, Person> idToPerson = people().collect(Collectors.toMap(Person::getId, Function.identity()));
         System.out.println("idToPerson: " + idToPerson.getClass().getName() + idToPerson);
 
